@@ -890,7 +890,7 @@ MonoBehaviour:
   rightKey: 100
   downKey: 115
   leftKey: 97
-  stringDrawKey: 32
+  stringDrawKey: 118
   output: {fileID: 1599003178}
   speed: 20
 --- !u!4 &911815452
@@ -1832,10 +1832,10 @@ RectTransform:
   m_Father: {fileID: 1806246484}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -295, y: 225.47}
-  m_SizeDelta: {x: 185.86331, y: 46.51409}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 105, y: -43.53}
+  m_SizeDelta: {x: 185.86331, y: 46.5141}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2114928204
 MonoBehaviour:
