@@ -6,17 +6,26 @@ public class stars : MonoBehaviour
     public Color normalColor;
     public Color selectedColor;
     public Vector3 cursor;
-    public Camera mainCamera;
     public LineRenderer drawingLine;
+    public bool clicking;
 
+    Camera mainCamera;
     Transform transform1;
     LineRenderer line;
-    public void Start()
+    bool lastFrameClicking;
+    Vector3 defaultScale;
+    private void Start()
+    {
+        defaultScale = stars1[0].localScale;
+        mainCamera = Camera.main;
+        StarPositions();
+    }
+    public void StarPositions()
     {
         //generate star positions
         float x = Screen.width;
         float y = Screen.height;
-        
+
         float screenRatio = x / y;
 
         foreach (Transform pos in stars1)
@@ -31,16 +40,12 @@ public class stars : MonoBehaviour
     }
     private void Update()
     {
-        //temporary, multiple inputs required
-        cursor = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        cursor.z = 0;
-
         Transform selected = stars1[0];
         float distance = Vector3.Distance(cursor, stars1[0].position);
 
         foreach (Transform pos in stars1)
         {
-            pos.GetComponent<SpriteRenderer>().color = normalColor;
+            deSelect(pos);
             float newDistance = Vector3.Distance(cursor, pos.position);
             if (newDistance < distance)
             {
@@ -48,21 +53,21 @@ public class stars : MonoBehaviour
                 selected = pos;
             }
         }
-        selected.GetComponent<SpriteRenderer>().color = selectedColor;
+        select(selected);
 
-        if (Input.GetMouseButtonDown(0))
+        if (clicking && !lastFrameClicking)
         {
             line = Instantiate(drawingLine);
             transform1 = selected;
         }
-        if (Input.GetMouseButton(0))
+        if (clicking)
         {
             line.SetPosition(0, transform1.position);
             line.SetPosition(1, cursor);
             line.startColor = normalColor;
             line.endColor = line.startColor;
         }
-        if (Input.GetMouseButtonUp(0))
+        if (!clicking && lastFrameClicking)
         {
             Destroy(line.gameObject);
             if (!transform1.Equals(selected))
@@ -76,5 +81,16 @@ public class stars : MonoBehaviour
                 Destroy(renderer.gameObject, 5);
             }
         }
+        lastFrameClicking = clicking;
+    }
+    void select(Transform transform)
+    {
+        transform.localScale = defaultScale * 1.2f;
+        transform.GetComponent<SpriteRenderer>().color = selectedColor;
+    }
+    void deSelect(Transform transform)
+    {
+        transform.localScale = defaultScale;
+        transform.GetComponent<SpriteRenderer>().color = normalColor;
     }
 }
