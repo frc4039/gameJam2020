@@ -7,9 +7,11 @@ public class stars : MonoBehaviour
     public Color selectedColor;
     public Vector3 cursor;
     public Camera mainCamera;
+    public LineRenderer drawingLine;
 
     Transform transform1;
-    private void Start()
+    LineRenderer line;
+    public void Start()
     {
         //generate star positions
         float x = Screen.width;
@@ -50,18 +52,28 @@ public class stars : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            line = Instantiate(drawingLine);
             transform1 = selected;
         }
         if (Input.GetMouseButton(0))
         {
-            //temporary
-            Debug.DrawLine(transform1.position, cursor);
+            line.SetPosition(0, transform1.position);
+            line.SetPosition(1, cursor);
+            line.startColor = normalColor;
+            line.endColor = line.startColor;
         }
         if (Input.GetMouseButtonUp(0))
         {
+            Destroy(line.gameObject);
             if (!transform1.Equals(selected))
             {
-                Debug.DrawLine(transform1.position, selected.position, normalColor, 10);
+                //for now, need actual string with physics
+                LineRenderer renderer = Instantiate(drawingLine);
+                renderer.SetPosition(0, transform1.position);
+                renderer.SetPosition(1, selected.position);
+                renderer.startColor = normalColor;
+                renderer.endColor = renderer.startColor;
+                Destroy(renderer.gameObject, 5);
             }
         }
     }
