@@ -66,19 +66,25 @@ public class stars : MonoBehaviour
 
         if (clicking && !lastFrameClicking && canDraw)
         {
-            line = Instantiate(drawingLine);
+            if (line == null)
+                line = Instantiate(drawingLine);
             transform1 = selected;
+            
         }
         if (clicking && canDraw)
         {
-            line.SetPosition(0, transform1.position);
-            line.SetPosition(1, cursor);
-            line.startColor = normalColor;
-            line.endColor = line.startColor;
+            if (line != null)
+            {
+                line.SetPosition(0, transform1.position);
+                line.SetPosition(1, cursor);
+                line.startColor = normalColor;
+                line.endColor = line.startColor;
+            }
         }
         if (!clicking && lastFrameClicking && canDraw)
         {
-            Destroy(line.gameObject);
+            if (line != null)
+                Destroy(line.gameObject);
             if (!transform1.Equals(selected))
             {
                 stringRenderer = Instantiate(stringLine);

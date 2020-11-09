@@ -394,7 +394,7 @@ MonoBehaviour:
   stringLine: {fileID: 8810090352931119732, guid: 5384a006b26d8f74b81e723dbac5e9d9,
     type: 3}
   ballObjectName: bouncyBall
-  clicking: 1
+  clicking: 0
 --- !u!4 &385152949
 Transform:
   m_ObjectHideFlags: 0
@@ -1055,6 +1055,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bouncyBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536461521127594724, guid: 2b2e718681e307b71a7bdf1c221abe64,
+        type: 3}
+      propertyPath: vertical
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536461521127594724, guid: 2b2e718681e307b71a7bdf1c221abe64,
+        type: 3}
+      propertyPath: horizontal
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b2e718681e307b71a7bdf1c221abe64, type: 3}

@@ -23,7 +23,7 @@ public class stringPhysics : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    private void LateUpdate()
+    private void Update()
     {
         if (canAddForce)
         {
