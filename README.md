@@ -1,1 +1,1 @@
-# gameJam2020
+# MakeShift's FIRST/WPI Game Jam 2020 Entry
