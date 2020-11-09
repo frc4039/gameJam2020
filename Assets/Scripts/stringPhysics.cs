@@ -28,7 +28,7 @@ public class stringPhysics : MonoBehaviour
         if (canAddForce)
         {
             force += acceleration * Time.deltaTime;
-            ball.AddForce(new Vector2(0, force) * Time.deltaTime);
+            ball.AddForce(transform.up * force * Time.deltaTime);
             lineRenderer.SetPosition(1, new Vector3(ball.transform.position.x, ball.transform.position.y - .65f, 1));
         }
     }
