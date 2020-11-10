@@ -9,6 +9,8 @@ public class playerCursor : MonoBehaviour
     public KeyCode stringDrawKey = KeyCode.Space;
     public stars output;
     public float speed;
+
+    bool touch = false;
     void Update()
     {
         output.clicking = Input.GetKey(stringDrawKey);
@@ -31,6 +33,18 @@ public class playerCursor : MonoBehaviour
 
         y *= Time.unscaledDeltaTime * speed;
         x *= Time.unscaledDeltaTime * speed;
+
+        if (Input.touchCount > 0)
+        {
+            touch = true;
+            Vector3 position = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            output.cursor = position;
+            output.clicking = true;
+        }
+        else if (touch)
+        {
+            output.clicking = false;
+        }
 
         transform.position += new Vector3(x, y, 0);
         output.cursor = transform.position;
