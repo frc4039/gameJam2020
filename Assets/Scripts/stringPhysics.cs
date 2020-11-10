@@ -5,19 +5,16 @@ public class stringPhysics : MonoBehaviour
     public Rigidbody2D ball;
     public float acceleration;
     LineRenderer lineRenderer;
-    BoxCollider2D boxCollider;
     bool canAddForce;
     bool canDestroy = false;
     float force = 1;
     private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        boxCollider = GetComponent<BoxCollider2D>();
     }
     void OnTriggerEnter2D()
     {
         canAddForce = true;
-        Destroy(boxCollider);
     }
     private void Update()
     {
@@ -27,7 +24,11 @@ public class stringPhysics : MonoBehaviour
             if (ball.position.y < midPoint.y)
                 canDestroy = true;
             if (ball.position.y > midPoint.y && canDestroy)
+            {
+                canAddForce = false;
+                canDestroy = false;
                 Destroy(gameObject);
+            }
             force = midPoint.y - ball.position.y;
             ball.AddForce(transform.up * force * Time.deltaTime * acceleration);
             lineRenderer.SetPosition(1, new Vector3(ball.transform.position.x, ball.transform.position.y - .65f, 1));
