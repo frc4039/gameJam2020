@@ -6,6 +6,7 @@ public class stayOnScreen : MonoBehaviour
 {
     public bool vertical;
     public bool horizontal;
+    public GameObject arrow;
     float xAxis;
     float yAxis;
     void Start()
@@ -28,5 +29,25 @@ public class stayOnScreen : MonoBehaviour
             transform.position = new Vector3(transform.position.x, -yAxis, transform.position.z);
         else if (transform.position.y < -yAxis && vertical)
             transform.position = new Vector3(transform.position.x, yAxis, transform.position.z);
+
+        if (!vertical)
+        {
+            if (transform.position.y > yAxis)
+            {
+                arrow.SetActive(true);
+                arrow.transform.localScale = new Vector3(1, 1, 1);
+                arrow.transform.position = new Vector3(transform.position.x, arrow.transform.position.y, arrow.transform.position.z);
+            }
+            else if (transform.position.y < -yAxis)
+            {
+                arrow.SetActive(true);
+                arrow.transform.localScale = new Vector3(1, -1, 1);
+                arrow.transform.position = new Vector3(transform.position.x, arrow.transform.position.y, arrow.transform.position.z);
+            }
+            else
+            {
+                arrow.SetActive(false);
+            }
+        }
     }
 }

@@ -7,6 +7,7 @@ public class stringPhysics : MonoBehaviour
     LineRenderer lineRenderer;
     BoxCollider2D boxCollider;
     bool canAddForce;
+    bool canDestroy = false;
     float force = 1;
     private void Start()
     {
@@ -16,19 +17,19 @@ public class stringPhysics : MonoBehaviour
     void OnTriggerEnter2D()
     {
         canAddForce = true;
-        Invoke("cantAddForce", 1f);
         Destroy(boxCollider);
-    }
-    void cantAddForce()
-    {
-        Destroy(gameObject);
     }
     private void Update()
     {
         if (canAddForce)
         {
-            force += acceleration * Time.deltaTime;
-            ball.AddForce(transform.up * force * Time.deltaTime);
+            Vector3 midPoint = new Vector3((lineRenderer.GetPosition(0).x + lineRenderer.GetPosition(2).x) / 2, (lineRenderer.GetPosition(0).y + lineRenderer.GetPosition(2).y) / 2, 1);
+            if (ball.position.y < midPoint.y)
+                canDestroy = true;
+            if (ball.position.y > midPoint.y && canDestroy)
+                Destroy(gameObject);
+            force = midPoint.y - ball.position.y;
+            ball.AddForce(transform.up * force * Time.deltaTime * acceleration);
             lineRenderer.SetPosition(1, new Vector3(ball.transform.position.x, ball.transform.position.y - .65f, 1));
         }
     }
