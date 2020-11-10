@@ -4,7 +4,6 @@ public class stringPhysics : MonoBehaviour
 {
     public Rigidbody2D ball;
     public float acceleration;
-    public float tolerance;
     LineRenderer lineRenderer;
     bool canAddForce;
     bool canDestroy = false;
@@ -24,15 +23,15 @@ public class stringPhysics : MonoBehaviour
             Vector3 midPoint = new Vector3((lineRenderer.GetPosition(0).x + lineRenderer.GetPosition(2).x) / 2, (lineRenderer.GetPosition(0).y + lineRenderer.GetPosition(2).y) / 2, 1);
             if (ball.position.y < midPoint.y)
                 canDestroy = true;
+            force = midPoint.y - ball.position.y;
+            lineRenderer.SetPosition(1, new Vector3(ball.transform.position.x, ball.transform.position.y - .65f, 1));
             if (ball.position.y > midPoint.y && canDestroy)
             {
                 canAddForce = false;
                 canDestroy = false;
                 Destroy(gameObject);
             }
-            force = midPoint.y + tolerance - ball.position.y;
             ball.AddForce(transform.up * force * Time.deltaTime * acceleration);
-            lineRenderer.SetPosition(1, new Vector3(ball.transform.position.x, ball.transform.position.y - .65f, 1));
         }
     }
 }

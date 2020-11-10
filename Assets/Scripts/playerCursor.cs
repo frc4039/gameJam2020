@@ -38,7 +38,7 @@ public class playerCursor : MonoBehaviour
         {
             touch = true;
             Vector3 position = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            output.cursor = position;
+            transform.position = position;
             output.clicking = true;
         }
         else if (touch)
