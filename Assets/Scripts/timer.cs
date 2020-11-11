@@ -14,9 +14,10 @@ public class timer : MonoBehaviour
     float time;
     void Start()
     {
+        //setting up
         time = timerTime;
         timerText.color = normalColor;
-
+        //checking if the time has been set up, and if not changing the lowTime
         if (lowTime > timerTime)
             lowTime = timerTime;
     }

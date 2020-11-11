@@ -9,6 +9,8 @@ public class playerCursor : MonoBehaviour
     public KeyCode stringDrawKey = KeyCode.Space;
     public stars output;
     public float speed;
+
+    bool touch = false;
     void Update()
     {
         output.clicking = Input.GetKey(stringDrawKey);
@@ -29,8 +31,20 @@ public class playerCursor : MonoBehaviour
         if (Input.GetKey(downKey) && Input.GetKey(upKey))
             y = 0;
 
-        y *= Time.deltaTime * speed;
-        x *= Time.deltaTime * speed;
+        y *= Time.unscaledDeltaTime * speed;
+        x *= Time.unscaledDeltaTime * speed;
+
+        if (Input.touchCount > 0)
+        {
+            touch = true;
+            Vector3 position = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            transform.position = position;
+            output.clicking = true;
+        }
+        else if (touch)
+        {
+            output.clicking = false;
+        }
 
         transform.position += new Vector3(x, y, 0);
         output.cursor = transform.position;
@@ -40,12 +54,12 @@ public class playerCursor : MonoBehaviour
         float screenRatio = screenX / screenY;
 
         if (transform.position.y > Camera.main.orthographicSize)
-            transform.position = new Vector3(transform.position.x, Camera.main.orthographicSize, 0);
+            transform.position = new Vector3(transform.position.x, Camera.main.orthographicSize, 1);
         else if (transform.position.y < -Camera.main.orthographicSize)
-            transform.position = new Vector3(transform.position.x, -Camera.main.orthographicSize, 0);
+            transform.position = new Vector3(transform.position.x, -Camera.main.orthographicSize, 1);
         if (transform.position.x > Camera.main.orthographicSize * screenRatio)
-            transform.position = new Vector3(Camera.main.orthographicSize * screenRatio, transform.position.y, 0);
+            transform.position = new Vector3(Camera.main.orthographicSize * screenRatio, transform.position.y, 1);
         else if (transform.position.x < -Camera.main.orthographicSize * screenRatio)
-            transform.position = new Vector3(-Camera.main.orthographicSize * screenRatio, transform.position.y, 0);
+            transform.position = new Vector3(-Camera.main.orthographicSize * screenRatio, transform.position.y, 1);
     }
 }
