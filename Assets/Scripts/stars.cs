@@ -10,6 +10,7 @@ public class stars : MonoBehaviour
     public LineRenderer stringLine;
     public string ballObjectName;
     public bool clicking;
+    public bool generatePositionsAtStartOfGame;
 
     Camera mainCamera;
     Transform transform1;
@@ -21,7 +22,8 @@ public class stars : MonoBehaviour
     {
         defaultScale = stars1[0].localScale;
         mainCamera = Camera.main;
-        StarPositions();
+        if (generatePositionsAtStartOfGame)
+            StarPositions();
     }
     public void StarPositions()
     {
@@ -43,9 +45,10 @@ public class stars : MonoBehaviour
     }
     private void Update()
     {
+        //selected star transform
         Transform selected = stars1[0];
         float distance = Vector3.Distance(cursor, stars1[0].position);
-
+        //choosing closest star to cursor
         foreach (Transform pos in stars1)
         {
             deSelect(pos);
@@ -57,13 +60,14 @@ public class stars : MonoBehaviour
             }
         }
         select(selected);
-
+        //checking if a string of this color exists
         bool canDraw;
         if (stringRenderer == null)
             canDraw = true;
         else
             canDraw = false;
 
+        //making temporary preview line
         if (clicking && !lastFrameClicking && canDraw)
         {
             if (line == null)
@@ -87,6 +91,7 @@ public class stars : MonoBehaviour
                 Destroy(line.gameObject);
             if (!transform1.Equals(selected))
             {
+                //making bouncing string
                 stringRenderer = Instantiate(stringLine);
                 Vector3 midPoint = new Vector3((transform1.position.x + selected.position.x) / 2, (transform1.position.y + selected.position.y) / 2, 1);
                 stringRenderer.transform.position = midPoint;
@@ -105,6 +110,7 @@ public class stars : MonoBehaviour
     }
     void select(Transform transform)
     {
+        //selecting a star
         transform.localScale = defaultScale * 1.2f;
         transform.GetComponent<SpriteRenderer>().color = selectedColor;
     }
