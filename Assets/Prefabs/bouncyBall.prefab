@@ -132,5 +132,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vertical: 0
-  horizontal: 0
+  horizontal: 1
   arrow: {fileID: 0}

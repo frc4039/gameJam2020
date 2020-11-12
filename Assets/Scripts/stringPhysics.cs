@@ -38,6 +38,7 @@ public class stringPhysics : MonoBehaviour
             pointOnStringY = M * ((-1 / M) * x + b) + B;
             pointOnStringX = (pointOnStringY - B) / M;
             float yForX = M * ball.position.x + B;
+            //determining which side of the line the ball is on
             if (ball.position.y < yForX)
                 canDestroy = true;
             if (ball.position.y > yForX)
@@ -48,6 +49,14 @@ public class stringPhysics : MonoBehaviour
             {
                 canAddForce = false;
                 canDestroy = false;
+                if (lineRenderer.startColor == new Color(1, 0, 0))
+                {
+                    FindObjectOfType<manager>().player1Points += 1;
+                }
+                if (lineRenderer.startColor == new Color(0, 0, 1))
+                {
+                    FindObjectOfType<manager>().player2Points += 1;
+                }
                 Destroy(gameObject);
             }
             ball.AddForce(transform.up * force * Time.deltaTime * acceleration);
