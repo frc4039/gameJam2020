@@ -11,6 +11,8 @@ public class stars : MonoBehaviour
     public string ballObjectName;
     public bool clicking;
     public bool generatePositionsAtStartOfGame;
+    public AudioClip startClip;
+    public AudioClip endClip;
 
     Camera mainCamera;
     Transform transform1;
@@ -73,7 +75,7 @@ public class stars : MonoBehaviour
             if (line == null)
                 line = Instantiate(drawingLine);
             transform1 = selected;
-            
+            FindObjectOfType<soundPlayer>().playSound(startClip);
         }
         if (clicking && canDraw)
         {
@@ -104,6 +106,7 @@ public class stars : MonoBehaviour
                 stringRenderer.startColor = normalColor;
                 stringRenderer.endColor = stringRenderer.startColor;
                 stringRenderer.GetComponent<stringPhysics>().ball = GameObject.Find(ballObjectName).GetComponent<Rigidbody2D>();
+                FindObjectOfType<soundPlayer>().playSound(endClip);
             }
         }
         lastFrameClicking = clicking;

@@ -1227,6 +1227,8 @@ MonoBehaviour:
   ballObjectName: bouncyBall
   clicking: 0
   generatePositionsAtStartOfGame: 0
+  startClip: {fileID: 8300000, guid: 0b4b6425f5df519469d9e7c6e2e4bf91, type: 3}
+  endClip: {fileID: 8300000, guid: 92e3e8513b287b24193e8c427dddc50d, type: 3}
 --- !u!4 &385152949
 Transform:
   m_ObjectHideFlags: 0
@@ -1410,6 +1412,147 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &575539504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 575539506}
+  - component: {fileID: 575539505}
+  - component: {fileID: 575539507}
+  m_Layer: 0
+  m_Name: soundPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &575539505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575539504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85cb42bcd23768d4f84c5972a725b6fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &575539506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575539504}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 228.29268, y: 250.97734, z: -1.125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &575539507
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575539504}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 77cb5da71fe5fa7459c053f88d3963d7,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.65
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &585829471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,6 +1731,10 @@ MonoBehaviour:
   paused: 0
   player1Points: 0
   player2Points: 0
+  winClip: {fileID: 8300000, guid: 02dde5a3450e7bd46b7f1a7344c066df, type: 3}
+  lossClip: {fileID: 8300000, guid: 5be165e039dc9d449a0e95a537b92ea3, type: 3}
+  pauseClip: {fileID: 8300000, guid: d520595e31484064c843c15290522165, type: 3}
+  resumeClip: {fileID: 8300000, guid: 776c7f9595aeb3940bf9669214f4be47, type: 3}
 --- !u!1 &691850366
 GameObject:
   m_ObjectHideFlags: 0
@@ -3455,6 +3602,8 @@ MonoBehaviour:
   ballObjectName: bouncyBall
   clicking: 0
   generatePositionsAtStartOfGame: 0
+  startClip: {fileID: 8300000, guid: 0b4b6425f5df519469d9e7c6e2e4bf91, type: 3}
+  endClip: {fileID: 8300000, guid: 92e3e8513b287b24193e8c427dddc50d, type: 3}
 --- !u!4 &1599003179
 Transform:
   m_ObjectHideFlags: 0
@@ -4566,7 +4715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e836baf6ad807a41b444cb79e8460d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerTime: 3
+  timerTime: 5
   lowTime: 3
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   lowColor: {r: 1, g: 0, b: 0, a: 1}
@@ -4596,6 +4745,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  clip: {fileID: 8300000, guid: d70e7a5622dde144e90668bcec0220f9, type: 3}
 --- !u!1 &5565543364547084287
 GameObject:
   m_ObjectHideFlags: 0
@@ -4665,6 +4815,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  clip: {fileID: 8300000, guid: d70e7a5622dde144e90668bcec0220f9, type: 3}
 --- !u!1 &6675188862143521403
 GameObject:
   m_ObjectHideFlags: 0
