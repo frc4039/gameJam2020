@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class stringPhysics : MonoBehaviour
+public class menuStringPhysics : MonoBehaviour
 {
     public Rigidbody2D ball;
     public float acceleration;
@@ -8,10 +8,12 @@ public class stringPhysics : MonoBehaviour
     bool canAddForce;
     bool canDestroy = false;
     float force = 1;
+    Vector3 midPoint;
     private void Start()
     {
         //finding the lineRenderer component
         lineRenderer = GetComponent<LineRenderer>();
+        midPoint = lineRenderer.GetPosition(1);
     }
     void OnTriggerEnter2D()
     {
@@ -38,7 +40,6 @@ public class stringPhysics : MonoBehaviour
             pointOnStringY = M * ((-1 / M) * x + b) + B;
             pointOnStringX = (pointOnStringY - B) / M;
             float yForX = M * ball.position.x + B;
-            //determining which side of the line the ball is on
             if (ball.position.y < yForX)
                 canDestroy = true;
             if (ball.position.y > yForX)
@@ -49,17 +50,12 @@ public class stringPhysics : MonoBehaviour
             {
                 canAddForce = false;
                 canDestroy = false;
-                if (lineRenderer.startColor == new Color(1, 0, 0))
-                {
-                    FindObjectOfType<manager>().player1Points += 1;
-                }
-                if (lineRenderer.startColor == new Color(0, 0, 1))
-                {
-                    FindObjectOfType<manager>().player2Points += 1;
-                }
-                Destroy(gameObject);
             }
             ball.AddForce(transform.up * force * Time.deltaTime * acceleration);
+        }
+        if (!canAddForce)
+        {
+            lineRenderer.SetPosition(1, midPoint);
         }
     }
 }

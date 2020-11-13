@@ -25,9 +25,7 @@ public class stayOnScreen : MonoBehaviour
             transform.position = new Vector3(-xAxis, transform.position.y, transform.position.z);
         else if (transform.position.x < -xAxis && horizontal)
             transform.position = new Vector3(xAxis, transform.position.y, transform.position.z);
-        if (transform.position.y > yAxis && vertical)
-            transform.position = new Vector3(transform.position.x, -yAxis, transform.position.z);
-        else if (transform.position.y < -yAxis && vertical)
+        if (transform.position.y < -yAxis && vertical)
             transform.position = new Vector3(transform.position.x, yAxis, transform.position.z);
 
         if (!vertical)
