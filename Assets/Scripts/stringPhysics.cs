@@ -4,6 +4,7 @@ public class stringPhysics : MonoBehaviour
 {
     public Rigidbody2D ball;
     public float acceleration;
+    public AudioClip stringBreak;
     LineRenderer lineRenderer;
     bool canAddForce;
     bool canDestroy = false;
@@ -58,6 +59,7 @@ public class stringPhysics : MonoBehaviour
                     FindObjectOfType<manager>().player2Points += 1;
                 }
                 Destroy(gameObject);
+                FindObjectOfType<soundPlayer>().playSound(stringBreak);
             }
             ball.AddForce(transform.up * force * Time.deltaTime * acceleration);
         }
