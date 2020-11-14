@@ -27,14 +27,14 @@ public class settingsMenu : MonoBehaviour
     }
     public void postProcessing()
     {
-        if (postProcessingBool)
-        {
-            PlayerPrefs.SetInt("postProcessing", 0);
-            postProcessingBool = false;
-        }
-        else if (!postProcessingBool)
+        if (!postProcessingBool)
         {
             PlayerPrefs.SetInt("postProcessing", 1);
+            postProcessingBool = false;
+        }
+        else if (postProcessingBool)
+        {
+            PlayerPrefs.SetInt("postProcessing", 0);
             postProcessingBool = true;
         }
         FindObjectOfType<applySettings>().applyPostProcessing();
@@ -64,7 +64,7 @@ public class settingsMenu : MonoBehaviour
         if (PlayerPrefs.GetInt("sensitivity") > 25)
             PlayerPrefs.SetInt("sensitivity", 25);
 
-        sensitivityText.text = PlayerPrefs.GetInt("sensitivity").ToString();
+        sensitivityText.text = PlayerPrefs.GetInt("sensitivity", 10).ToString();
         FindObjectOfType<applySettings>().applySensitivity();
     }
 }
