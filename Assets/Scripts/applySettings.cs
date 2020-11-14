@@ -12,7 +12,7 @@ public class applySettings : MonoBehaviour
     }
     public void applyPostProcessing()
     {
-        if (PlayerPrefs.GetInt("postProcessing") == 0)
+        if (PlayerPrefs.GetInt("postProcessing", 1) == 0)
             Camera.main.GetComponent<PostProcessVolume>().profile = off;
         else
             Camera.main.GetComponent<PostProcessVolume>().profile = normal;
@@ -21,7 +21,7 @@ public class applySettings : MonoBehaviour
     {
         foreach(playerCursor cursor in Resources.FindObjectsOfTypeAll(typeof(playerCursor)))
         {
-            cursor.speed = PlayerPrefs.GetInt("sensitivity");
+            cursor.speed = PlayerPrefs.GetInt("sensitivity", 10);
         }
     }
 }
