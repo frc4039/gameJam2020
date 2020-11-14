@@ -5,7 +5,9 @@ public class soundPlayer : MonoBehaviour
 {
     public void playSound(AudioClip clip)
     {
-        GetComponent<AudioSource>().clip = clip;
-        GetComponent<AudioSource>().Play();
+        AudioSource source = Instantiate(GetComponent<AudioSource>());
+        source.clip = clip;
+        source.Play();
+        Destroy(source.gameObject, source.clip.length);
     }
 }
