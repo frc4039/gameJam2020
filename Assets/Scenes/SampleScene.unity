@@ -367,6 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  settingsMenuObject: {fileID: 0}
   endMenuLoss: {fileID: 0}
   endMenuWin: {fileID: 0}
   pauseKey: 27
@@ -376,6 +377,10 @@ MonoBehaviour:
   paused: 0
   player1Points: 0
   player2Points: 0
+  winClip: {fileID: 0}
+  lossClip: {fileID: 0}
+  pauseClip: {fileID: 0}
+  resumeClip: {fileID: 0}
 --- !u!4 &1218027159
 Transform:
   m_ObjectHideFlags: 0

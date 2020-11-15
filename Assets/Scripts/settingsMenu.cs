@@ -10,16 +10,12 @@ public class settingsMenu : MonoBehaviour
     void Start()
     {
         if (PlayerPrefs.GetInt("postProcessing") == 0)
-        { 
             postProcessingBool = false; 
-        }
         else
             postProcessingBool = true;
 
         if (PlayerPrefs.GetInt("subTitles") == 0)
-        {
             subTitlesBool = false;
-        }
         else
             subTitlesBool = true;
 

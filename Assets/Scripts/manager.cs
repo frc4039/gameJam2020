@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class manager : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject settingsMenuObject;
     public GameObject endMenuLoss;
     public GameObject endMenuWin;
     public KeyCode pauseKey = KeyCode.Escape;
@@ -42,6 +43,7 @@ public class manager : MonoBehaviour
         cursor1.SetActive(true);
         cursor2.SetActive(true);
         pauseMenu.SetActive(false);
+        settingsMenuObject.SetActive(false);
         FindObjectOfType<soundPlayer>().playSound(resumeClip);
     }
     public void mainMenu()
@@ -57,38 +59,45 @@ public class manager : MonoBehaviour
     }
     public void gameEndLoss()
     {
-        Time.timeScale = 0;
-        cursor1.SetActive(false);
-        cursor2.SetActive(false);
-        endMenuLoss.SetActive(true);
-        gameEnded = true;
-        FindObjectOfType<soundPlayer>().playSound(lossClip);
+        //if the game is not over it wont end again
+        if (!gameEnded)
+        {
+            Time.timeScale = 0;
+            cursor1.SetActive(false);
+            cursor2.SetActive(false);
+            endMenuLoss.SetActive(true);
+            gameEnded = true;
+            FindObjectOfType<soundPlayer>().playSound(lossClip);
+        }
     }
     public void gameEndWin()
     {
-        Time.timeScale = 0;
-        cursor1.SetActive(false);
-        cursor2.SetActive(false);
-        endMenuWin.SetActive(true);
-        gameEnded = true;
-        Text text = endMenuWin.GetComponentInChildren<Text>();
-        if (player1Points > player2Points)
+        if (!gameEnded)
         {
-            text.color = new Color(1, 0, 0);
-            text.text = "Red Won!";
-        }
-        if (player1Points < player2Points)
-        {
-            text.color = new Color(0, 0, 1);
-            text.text = "Blue Won!";
-        }
-        if (player1Points == player2Points)
-        {
-            text.color = new Color(1, 1, 1);
-            text.text = "Draw!";
-        }
+            Time.timeScale = 0;
+            cursor1.SetActive(false);
+            cursor2.SetActive(false);
+            endMenuWin.SetActive(true);
+            gameEnded = true;
+            Text text = endMenuWin.GetComponentInChildren<Text>();
+            if (player1Points > player2Points)
+            {
+                text.color = new Color(1, 0, 0);
+                text.text = "Red Won!";
+            }
+            if (player1Points < player2Points)
+            {
+                text.color = new Color(0, 0, 1);
+                text.text = "Blue Won!";
+            }
+            if (player1Points == player2Points)
+            {
+                text.color = new Color(1, 1, 1);
+                text.text = "Draw!";
+            }
 
-        FindObjectOfType<soundPlayer>().playSound(winClip);
+            FindObjectOfType<soundPlayer>().playSound(winClip);
+        }
     }
     public void nextLevel()
     {
