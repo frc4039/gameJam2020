@@ -23,7 +23,7 @@ public class settingsMenu : MonoBehaviour
         else
             subTitlesBool = true;
 
-        sensitivityText.text = PlayerPrefs.GetInt("sensitivity").ToString();
+        sensitivityText.text = PlayerPrefs.GetInt("sensitivity", 10).ToString();
     }
     public void postProcessing()
     {
