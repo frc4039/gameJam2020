@@ -1845,7 +1845,7 @@ GameObject:
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4789,7 +4789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.48083812, b: 0, a: 1}
+  m_Color: {r: 0.8745099, g: 0.7254902, b: 0.039215688, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4890,7 +4890,7 @@ MonoBehaviour:
   timerTime: 5
   lowTime: 3
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  lowColor: {r: 1, g: 0.48083812, b: 0, a: 1}
+  lowColor: {r: 0.8745099, g: 0.7254902, b: 0.039215688, a: 1}
   timerText: {fileID: 678328498501588440}
   onTimerZero:
     m_PersistentCalls:
@@ -4971,7 +4971,7 @@ MonoBehaviour:
   timerTime: 30
   lowTime: 5
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  lowColor: {r: 1, g: 0.48083812, b: 0, a: 1}
+  lowColor: {r: 0.8745099, g: 0.7254902, b: 0.039215688, a: 1}
   timerText: {fileID: 1798670148867917916}
   onTimerZero:
     m_PersistentCalls:
