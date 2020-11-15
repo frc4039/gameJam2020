@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   acceleration: 5000
+  stringBreak: {fileID: 8300000, guid: f18dfa2bd186adc49b564e37f21e0e73, type: 3}
 --- !u!61 &8810090352931119722
 BoxCollider2D:
   m_ObjectHideFlags: 0

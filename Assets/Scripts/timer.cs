@@ -10,8 +10,10 @@ public class timer : MonoBehaviour
     public Color lowColor;
     public Text timerText;
     public UnityEvent onTimerZero;
+    public AudioClip clip;
 
     float time;
+    string lastFrameTime;
     void Start()
     {
         //setting up
@@ -39,5 +41,10 @@ public class timer : MonoBehaviour
             onTimerZero.Invoke();
             Destroy(gameObject);
         }
+        if (timerText.color == lowColor && lastFrameTime != time.ToString("0"))
+        {
+            FindObjectOfType<soundPlayer>().playSound(clip);
+        }
+        lastFrameTime = time.ToString("0");
     }
 }
