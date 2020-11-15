@@ -781,7 +781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -47.1, y: 48.00004}
+  m_AnchoredPosition: {x: -47.09961, y: 48.00003}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &364963596
@@ -1935,7 +1935,7 @@ GameObject:
   - component: {fileID: 994726246}
   - component: {fileID: 994726245}
   m_Layer: 5
-  m_Name: Text
+  m_Name: CreditText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1957,7 +1957,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 83.1, y: 24.3}
+  m_AnchoredPosition: {x: 83.09961, y: 24.299988}
   m_SizeDelta: {x: 153.72134, y: 42.689255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &994726245
@@ -1980,7 +1980,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 37714dc0b810089ae8b5ec24f2a02002, type: 3}
-    m_FontSize: 31
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1991,7 +1991,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Music from Bensound.com
+  m_Text: 'Music from Bensound.com
+
+    SFX generated using sfxr.me'
 --- !u!222 &994726246
 CanvasRenderer:
   m_ObjectHideFlags: 0
